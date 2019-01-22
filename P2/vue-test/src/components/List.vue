@@ -12,7 +12,9 @@
       <tr v-for="character in characters">
         <td>{{ character.name }}</td>
         <td>{{ character.house }}</td>
-        <td> <button @click="goToDetail(character._id)">Ver detalle</button> </td>
+        <td> 
+          <button @click=" () => {goToDetail(character._id, character.name); }">Ver detalle</button>
+        </td>
       </tr>
     </table>
   </div>
@@ -57,8 +59,8 @@
        * @param {string} id. the "_id" of the character that we are going to request.
        * @method goToDetail
        */
-      goToDetail(id) {
-        // CODE HERE
+      goToDetail(id, name) {
+        this.$router.push({name: 'Detail', params: {id: id, name: name}});
       }
     }
   }
